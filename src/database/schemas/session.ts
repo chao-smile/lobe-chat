@@ -24,10 +24,10 @@ const ttsSchema = z.object({
 
 export const AgentSchema = z.object({
   autoCreateTopicThreshold: z.number().default(2),
-  compressThreshold: z.number().default(20).optional(),
+  compressThreshold: z.number().optional(),
   displayMode: z.enum(['chat', 'docs']).optional(),
   enableAutoCreateTopic: z.boolean().default(true),
-  enableCompressThreshold: z.boolean().default(true).optional(),
+  enableCompressThreshold: z.boolean().optional(),
   enableHistoryCount: z.boolean().optional(),
   enableMaxTokens: z.boolean().optional(),
   fewShots: fewShotsSchema.optional(),

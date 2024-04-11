@@ -46,8 +46,10 @@ export const COOKIE_CACHE_DAYS = 30;
 
 export const DEFAULT_AGENT_CONFIG: LobeAgentConfig = {
   autoCreateTopicThreshold: 2,
+  compressThreshold: 20,
   displayMode: 'chat',
   enableAutoCreateTopic: true,
+  enableCompressThreshold: true,
   historyCount: 1,
   model: 'gpt-3.5-turbo',
   params: {
