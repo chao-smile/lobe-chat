@@ -29,15 +29,10 @@
     }
   ],
   "id": "/",
-  "name": "LobeChat",
+  "name": "ChatGPT",
   "orientation": "portrait",
   "scope": "/",
   "screenshots": [
-    {
-      "src": "/screenshots/screenshot-1.png",
-      "sizes": "750x1334",
-      "type": "image/png"
-    },
     {
       "src": "/screenshots/screenshot-2.png",
       "sizes": "750x1334",
@@ -54,7 +49,7 @@
       "type": "image/png"
     }
   ],
-  "short_name": "LobeChat",
+  "short_name": "ChatGPT",
   "splash_pages": null,
   "start_url": ".",
   "theme_color": "#000000"
