@@ -31,7 +31,7 @@ const useStyles = createStyles(({ css }) => {
   };
 });
 
-const InputArea = memo<{ setExpand?: (expand: boolean) => void }>(({ setExpand }) => {
+const InputArea = memo<{ setExpand?: (_: boolean) => void }>(({ setExpand }) => {
   const { t } = useTranslation('chat');
   const { styles } = useStyles();
   const ref = useRef<TextAreaRef>(null);

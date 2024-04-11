@@ -13,7 +13,6 @@ import { pluginHelpers, useToolStore } from '@/store/tool';
 import { toolSelectors } from '@/store/tool/selectors';
 
 import { useStore } from '../store';
-import AddPluginButton from './AddPluginButton';
 import LoadingList from './LoadingList';
 import LocalPluginItem from './LocalPluginItem';
 import PluginAction from './PluginAction';
@@ -122,7 +121,7 @@ const AgentPlugin = memo(() => {
             ),
             extra: (
               <Space.Compact style={{ width: 'auto' }}>
-                <AddPluginButton />
+                {/* <AddPluginButton /> */}
                 {hasDeprecated ? (
                   <Tooltip title={t('plugin.clearDeprecated')}>
                     <Button

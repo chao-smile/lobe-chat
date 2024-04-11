@@ -5,10 +5,10 @@ export const opeanaiTTSOptions: SelectProps['options'] = [
     label: 'tts-1',
     value: 'tts-1',
   },
-  {
-    label: 'tts-1-hd',
-    value: 'tts-1-hd',
-  },
+  // {
+  //   label: 'tts-1-hd',
+  //   value: 'tts-1-hd',
+  // },
 ];
 
 export const opeanaiSTTOptions: SelectProps['options'] = [
@@ -23,8 +23,8 @@ export const sttOptions: SelectProps['options'] = [
     label: 'OpenAI',
     value: 'openai',
   },
-  {
-    label: 'Browser',
-    value: 'browser',
-  },
+  // {
+  //   label: 'Browser',
+  //   value: 'browser',
+  // },
 ];

@@ -1,11 +1,9 @@
-import { Upload } from 'antd';
 import { useResponsive } from 'antd-style';
-import { Feather, FileClock, HardDriveDownload, HardDriveUpload } from 'lucide-react';
+import { HardDriveDownload } from 'lucide-react';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { CHANGELOG, FEEDBACK } from '@/const/url';
-import { useImportConfig } from '@/hooks/useImportConfig';
+// import { useImportConfig } from '@/hooks/useImportConfig';
 import { configService } from '@/services/config';
 import { SettingsTabs } from '@/store/global/initialState';
 
@@ -17,7 +15,7 @@ interface ExtraListProps {
 const ExtraList = memo<ExtraListProps>(({ activeTab }) => {
   const { t } = useTranslation('common');
 
-  const { importConfig } = useImportConfig();
+  // const { importConfig } = useImportConfig();
   const { mobile } = useResponsive();
   const items = [
     {
@@ -26,23 +24,23 @@ const ExtraList = memo<ExtraListProps>(({ activeTab }) => {
       onClick: configService.exportAll,
       value: 'export',
     },
-    {
-      icon: Feather,
-      label: t('feedback'),
-      onClick: () => window.open(FEEDBACK, '__blank'),
-      value: 'feedback',
-    },
-    {
-      icon: FileClock,
-      label: t('changelog'),
-      onClick: () => window.open(CHANGELOG, '__blank'),
-      value: 'changelog',
-    },
+    // {
+    //   icon: Feather,
+    //   label: t('feedback'),
+    //   onClick: () => window.open(FEEDBACK, '__blank'),
+    //   value: 'feedback',
+    // },
+    // {
+    //   icon: FileClock,
+    //   label: t('changelog'),
+    //   onClick: () => window.open(CHANGELOG, '__blank'),
+    //   value: 'changelog',
+    // },
   ];
 
   return (
     <>
-      <Upload
+      {/* <Upload
         beforeUpload={(file) => {
           importConfig(file);
 
@@ -52,7 +50,7 @@ const ExtraList = memo<ExtraListProps>(({ activeTab }) => {
         showUploadList={false}
       >
         <Item icon={HardDriveUpload} label={t('import')} style={{ width: '100vw' }} />
-      </Upload>
+      </Upload> */}
       {items.map(({ value, icon, label, onClick }) => (
         <div key={value} onClick={onClick}>
           <Item active={mobile ? false : activeTab === value} icon={icon} label={label} />

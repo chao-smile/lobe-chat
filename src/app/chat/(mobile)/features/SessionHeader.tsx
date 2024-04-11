@@ -6,7 +6,6 @@ import { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
 import { MOBILE_HEADER_ICON_SIZE } from '@/const/layoutTokens';
-import SyncStatusInspector from '@/features/SyncStatusInspector';
 import { useGlobalStore } from '@/store/global';
 import { commonSelectors } from '@/store/global/selectors';
 import { useSessionStore } from '@/store/session';
@@ -33,8 +32,13 @@ const Header = memo(() => {
           <div onClick={() => router.push('/settings')}>
             {avatar ? <Avatar avatar={avatar} size={28} /> : <Logo size={28} />}
           </div>
-          <Logo type={'text'} />
-          <SyncStatusInspector placement={'bottom'} />
+          {/* <Logo type={'text'} /> */}
+          <p style={{ display: 'flex', fontSize: 14, fontWeight: '500' }}>
+            <span>OpenAI</span>
+            <span style={{ opacity: 0.7 }}>&nbsp;/&nbsp;</span>
+            <span style={{ opacity: 0.7 }}>ChatGPT</span>
+          </p>
+          {/* <SyncStatusInspector placement={'bottom'} /> */}
         </Flexbox>
       }
       right={

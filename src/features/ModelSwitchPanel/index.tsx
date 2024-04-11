@@ -76,14 +76,19 @@ const ModelSwitchPanel = memo<PropsWithChildren>(({ children }) => {
       return items;
     };
 
+    const enabledListfIlterCopy = enabledList.map((provider) => ({
+      ...provider,
+      chatModels: provider.chatModels.filter((model) => model.id.includes('gpt-3')),
+    }));
+
     // If there is only one provider, just remove the group, show model directly
-    if (enabledList.length === 1) {
-      const provider = enabledList[0];
+    if (enabledListfIlterCopy.length === 1) {
+      const provider = enabledListfIlterCopy[0];
       return getModelItems(provider);
     }
 
     // otherwise show with provider group
-    return enabledList.map((provider) => ({
+    return enabledListfIlterCopy.map((provider) => ({
       children: getModelItems(provider),
       key: provider.id,
       label: <ProviderItemRender provider={provider.id} />,

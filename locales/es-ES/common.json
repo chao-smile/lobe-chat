@@ -1,7 +1,7 @@
 {
   "about": "Acerca de",
   "advanceSettings": "Configuración avanzada",
-  "appInitializing": "LobeChat está inicializando, por favor espere...",
+  "appInitializing": "ChatGPT está inicializando, por favor espere...",
   "autoGenerate": "Generación automática",
   "autoGenerateTooltip": "Completar automáticamente la descripción del asistente basándose en las sugerencias",
   "cancel": "Cancelar",

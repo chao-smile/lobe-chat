@@ -29,6 +29,11 @@ const ModelSelect = memo(() => {
   const { styles } = useStyles();
 
   const options = useMemo<SelectProps['options']>(() => {
+    const enabledListfIlterCopy = enabledList.map((x) => ({
+      ...x,
+      chatModels: x.chatModels.filter((z) => z.id.includes('gpt-3')),
+    }));
+
     const getChatModels = (provider: ModelProviderCard) =>
       provider.chatModels.map((model) => ({
         label: <ModelItemRender {...model} />,
@@ -36,13 +41,13 @@ const ModelSelect = memo(() => {
         value: model.id,
       }));
 
-    if (enabledList.length === 1) {
-      const provider = enabledList[0];
+    if (enabledListfIlterCopy.length === 1) {
+      const provider = enabledListfIlterCopy[0];
 
       return getChatModels(provider);
     }
 
-    return enabledList.map((provider) => ({
+    return enabledListfIlterCopy.map((provider) => ({
       label: <ProviderItemRender provider={provider.id} />,
       options: getChatModels(provider),
     }));

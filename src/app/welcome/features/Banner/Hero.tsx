@@ -1,13 +1,13 @@
-import dynamic from 'next/dynamic';
+import { FluentEmoji } from '@lobehub/ui';
+// import dynamic from 'next/dynamic';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 
 import { genSize, useStyles } from './style';
 
-const LogoThree = dynamic(() => import('@lobehub/ui/es/LogoThree'));
-const LogoSpline = dynamic(() => import('@lobehub/ui/es/LogoThree/LogoSpline'));
-
+// const LogoThree = dynamic(() => import('@lobehub/ui/es/LogoThree'));
+// const LogoSpline = dynamic(() => import('@lobehub/ui/es/LogoThree/LogoSpline'));
 const Hero = memo<{ mobile?: boolean; width: number }>(({ width, mobile }) => {
   const size: any = {
     base: genSize(width / 3.5, 240),
@@ -33,10 +33,30 @@ const Hero = memo<{ mobile?: boolean; width: number }>(({ width, mobile }) => {
           position: 'relative',
         }}
       >
-        {mobile ? <LogoThree size={size.logo} /> : <LogoSpline height={'100%'} width={'100%'} />}
+        {/* {mobile ? <LogoThree /> : <LogoSpline height={'100%'} width={'100%'} />} */}
+        <div style={{ display: 'flex', height: '50%', margin: 'auto', width: '100%', zIndex: -1 }}>
+          <FluentEmoji
+            emoji={'✨'}
+            size={size.logo / 4}
+            style={{ alignSelf: 'flex-start' }}
+            type={'anim'}
+          />
+          <FluentEmoji
+            emoji={'🤩'}
+            size={size.logo / (mobile ? 2 : 3)}
+            style={{ alignSelf: 'center' }}
+            type={'anim'}
+          />
+          <FluentEmoji
+            emoji={'✨'}
+            size={size.logo / 4}
+            style={{ alignSelf: 'flex-end' }}
+            type={'anim'}
+          />
+        </div>
       </Flexbox>
       <div className={styles.title} style={{ fontSize: size.title }}>
-        <strong style={mobile ? { fontSize: '1.2em' } : {}}>LobeChat</strong>
+        <strong style={mobile ? { fontSize: '1.2em' } : {}}>ChatGPT</strong>
         {mobile ? <br /> : ' '}
         {t('slogan.title')}
       </div>

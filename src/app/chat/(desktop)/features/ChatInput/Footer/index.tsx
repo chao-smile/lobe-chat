@@ -56,7 +56,7 @@ const useStyles = createStyles(({ css, prefixCls, token }) => {
 
 const isMac = isMacOS();
 
-const Footer = memo<{ setExpand?: (expand: boolean) => void }>(({ setExpand }) => {
+const Footer = memo<{ setExpand?: (_: boolean) => void }>(({ setExpand }) => {
   const { t } = useTranslation('chat');
 
   const { theme, styles } = useStyles();

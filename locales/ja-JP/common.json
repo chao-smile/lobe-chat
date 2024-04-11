@@ -1,7 +1,7 @@
 {
   "about": "概要",
   "advanceSettings": "高度な設定",
-  "appInitializing": "LobeChatを初期化中です。しばらくお待ちください...",
+  "appInitializing": "ChatGPTを初期化中です。しばらくお待ちください...",
   "autoGenerate": "自動生成",
   "autoGenerateTooltip": "ヒントに基づいてエージェントの説明を自動生成します",
   "cancel": "キャンセル",
