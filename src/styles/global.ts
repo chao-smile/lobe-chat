@@ -19,4 +19,9 @@ export default ({ prefixCls, token }: { prefixCls: string; token: Theme }) => cs
   p {
     margin-bottom: 0;
   }
+
+  .ant-message-custom-content {
+    display: flex;
+    align-items: center;
+  }
 `;

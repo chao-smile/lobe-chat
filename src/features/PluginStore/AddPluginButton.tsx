@@ -1,5 +1,5 @@
 import { Icon } from '@lobehub/ui';
-import { Button } from 'antd';
+import { Button, message } from 'antd';
 import { PackagePlus } from 'lucide-react';
 import { forwardRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -7,9 +7,11 @@ import { useTranslation } from 'react-i18next';
 import DevModal from '@/features/PluginDevModal';
 import { useToolStore } from '@/store/tool';
 
-const AddPluginButton = forwardRef<HTMLButtonElement>((props, ref) => {
+const AddPluginButton = forwardRef<HTMLButtonElement>((_, ref) => {
   const { t } = useTranslation('setting');
   const [showModal, setModal] = useState(false);
+
+  const [messageApi, contextHolder] = message.useMessage();
 
   const [installCustomPlugin, updateNewDevPlugin] = useToolStore((s) => [
     s.installCustomPlugin,
@@ -22,6 +24,7 @@ const AddPluginButton = forwardRef<HTMLButtonElement>((props, ref) => {
         e.stopPropagation();
       }}
     >
+      {contextHolder}
       <DevModal
         onOpenChange={setModal}
         onSave={async (devPlugin) => {
@@ -34,7 +37,8 @@ const AddPluginButton = forwardRef<HTMLButtonElement>((props, ref) => {
       <Button
         icon={<Icon icon={PackagePlus} />}
         onClick={() => {
-          setModal(true);
+          // setModal(true);
+          messageApi.warning('暂不支持自定义插件导入！');
         }}
         ref={ref}
       >
