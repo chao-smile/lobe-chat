@@ -13,7 +13,6 @@ import { settingsSelectors } from '@/store/global/selectors';
 import { useSessionStore } from '@/store/session';
 import { agentSelectors } from '@/store/session/selectors';
 import { ChatMessageError } from '@/types/message';
-import { getMessageError } from '@/utils/fetch';
 
 import CommonSTT from './common';
 
@@ -74,7 +73,8 @@ const OpenaiSTT = memo<{ mobile?: boolean }>(({ mobile }) => {
     onSuccess: async () => {
       if (!response) return;
       if (response.status === 200) return;
-      const message = await getMessageError(response);
+      // const message = await getMessageError(response);
+      const message = undefined;
       // console.log('onSuccess', message);
       if (message) {
         setError(message);
@@ -85,7 +85,7 @@ const OpenaiSTT = memo<{ mobile?: boolean }>(({ mobile }) => {
     },
     onTextChange: (text) => {
       if (loading) stop();
-      if (text && !isRecording) updateInputMessage(text);
+      if (text) updateInputMessage(text);
     },
   });
 
