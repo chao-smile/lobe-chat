@@ -13,8 +13,8 @@ import { settingsSelectors } from '@/store/global/selectors';
 // import { useSessionStore } from '@/store/session';
 // import { agentSelectors } from '@/store/session/selectors';
 import { ChatMessageError } from '@/types/message';
-import { getMessageError } from '@/utils/fetch';
 
+// import { getMessageError } from '@/utils/fetch';
 import CommonSTT from './common';
 
 interface STTConfig extends SWRConfiguration {
@@ -57,12 +57,21 @@ const OpenaiSTT = memo<{ mobile?: boolean }>(({ mobile }) => {
 
   const setDefaultError = useCallback(
     (err?: any) => {
-      setError({ body: err, message: t('stt.responseError', { ns: 'error' }), type: 500 });
+      setError(undefined);
+      console.info(err);
+      // { body: err, message: t('stt.responseError', { ns: 'error' }), type: 500 });
     },
     [t],
   );
-
-  const { start, isLoading, stop, formattedTime, time, response, isRecording } = useOpenaiSTT({
+  const isRecording = false;
+  const {
+    start,
+    isLoading,
+    stop,
+    formattedTime,
+    time,
+    //  response
+  } = useOpenaiSTT({
     onError: (err) => {
       stop();
       setDefaultError(err);
@@ -72,15 +81,14 @@ const OpenaiSTT = memo<{ mobile?: boolean }>(({ mobile }) => {
       setDefaultError(err);
     },
     onSuccess: async () => {
-      if (!response) return;
-      if (response.status === 200) return;
-      const message = await getMessageError(response);
-      // console.log('onSuccess', message);
-      if (message) {
-        setError(message);
-      } else {
-        setDefaultError();
-      }
+      // if (!response) return;
+      // if (response.status === 200) return;
+      // const message = await getMessageError(response);
+      // if (message) {
+      //   setError(message);
+      // } else {
+      //   setDefaultError();
+      // }
       stop();
     },
     onTextChange: (text) => {
