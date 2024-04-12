@@ -50,10 +50,10 @@ const OpenaiSTT = memo<{ mobile?: boolean }>(({ mobile }) => {
   const [error, setError] = useState<ChatMessageError>();
   const { t } = useTranslation('chat');
 
-  const [
-    loading,
-    //  updateInputMessage
-  ] = useChatStore((s) => [!!s.chatLoadingId, s.updateInputMessage]);
+  const [loading, updateInputMessage] = useChatStore((s) => [
+    !!s.chatLoadingId,
+    s.updateInputMessage,
+  ]);
 
   const setDefaultError = useCallback(
     (err?: any) => {
@@ -85,8 +85,7 @@ const OpenaiSTT = memo<{ mobile?: boolean }>(({ mobile }) => {
     },
     onTextChange: (text) => {
       if (loading) stop();
-      console.info(text);
-      // if (text) updateInputMessage(text);
+      if (text && !isRecording) updateInputMessage(text);
     },
   });
 
