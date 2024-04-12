@@ -10,9 +10,10 @@ import { API_ENDPOINTS } from '@/services/_url';
 import { useChatStore } from '@/store/chat';
 import { useGlobalStore } from '@/store/global';
 import { settingsSelectors } from '@/store/global/selectors';
-import { useSessionStore } from '@/store/session';
-import { agentSelectors } from '@/store/session/selectors';
+// import { useSessionStore } from '@/store/session';
+// import { agentSelectors } from '@/store/session/selectors';
 import { ChatMessageError } from '@/types/message';
+import { getMessageError } from '@/utils/fetch';
 
 import CommonSTT from './common';
 
@@ -22,14 +23,14 @@ interface STTConfig extends SWRConfiguration {
 
 const useOpenaiSTT = (config: STTConfig) => {
   const ttsSettings = useGlobalStore(settingsSelectors.currentTTS, isEqual);
-  const ttsAgentSettings = useSessionStore(agentSelectors.currentAgentTTS, isEqual);
+  // const ttsAgentSettings = useSessionStore(agentSelectors.currentAgentTTS, isEqual);
   const locale = useGlobalStore(settingsSelectors.currentLanguage);
 
   const autoStop = ttsSettings.sttAutoStop;
-  const sttLocale =
-    ttsAgentSettings?.sttLocale && ttsAgentSettings.sttLocale !== 'auto'
-      ? ttsAgentSettings.sttLocale
-      : locale;
+  const sttLocale = locale;
+  // ttsAgentSettings?.sttLocale && ttsAgentSettings.sttLocale !== 'auto'
+  //   ? ttsAgentSettings.sttLocale
+  //   : locale;
 
   return useOpenAISTT(sttLocale, {
     ...config,
@@ -73,8 +74,7 @@ const OpenaiSTT = memo<{ mobile?: boolean }>(({ mobile }) => {
     onSuccess: async () => {
       if (!response) return;
       if (response.status === 200) return;
-      // const message = await getMessageError(response);
-      const message = undefined;
+      const message = await getMessageError(response);
       // console.log('onSuccess', message);
       if (message) {
         setError(message);
